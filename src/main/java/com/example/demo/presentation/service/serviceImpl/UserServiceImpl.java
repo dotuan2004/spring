@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.presentation.service.serviceImpl;
 
-import com.example.demo.Repository.UserRepository;
-import com.example.demo.Repository.RoleRepository;
-import com.example.demo.entity.User;
-import com.example.demo.entity.Role;
+import com.example.demo.persistence.Repository.UserRepository;
+import com.example.demo.persistence.Repository.RoleRepository;
+import com.example.demo.persistence.entity.User;
+import com.example.demo.persistence.entity.Role;
+import com.example.demo.presentation.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 
     UserRepository nguoiDungRepository;

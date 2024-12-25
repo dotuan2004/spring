@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.presentation.service;
 
-import com.example.demo.entity.Role;
-import com.example.demo.entity.User;
+import com.example.demo.persistence.entity.Role;
+import com.example.demo.persistence.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

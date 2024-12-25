@@ -1,19 +1,19 @@
-package com.example.demo.service;
+package com.example.demo.presentation.service.serviceImpl;
 
-import com.example.demo.DTO.BookDTO;
 import com.example.demo.DTO.ReviewDTO;
-import com.example.demo.Repository.BookRepository;
-import com.example.demo.Repository.ReviewRepository;
-import com.example.demo.Repository.UserRepository;
-import com.example.demo.entity.Book;
-import com.example.demo.entity.Review;
-import com.example.demo.entity.User;
+import com.example.demo.persistence.Repository.BookRepository;
+import com.example.demo.persistence.Repository.ReviewRepository;
+import com.example.demo.persistence.Repository.UserRepository;
+import com.example.demo.persistence.entity.Book;
+import com.example.demo.persistence.entity.Review;
+import com.example.demo.persistence.entity.User;
+import com.example.demo.presentation.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ReviewServiceImpl implements ReviewService{
+public class ReviewServiceImpl implements ReviewService {
     @Autowired
     BookRepository bookRepository;
     @Autowired

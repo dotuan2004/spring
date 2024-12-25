@@ -1,10 +1,8 @@
-package com.example.demo.Repository;
+package com.example.demo.persistence.Repository;
 
-import com.example.demo.DTO.ReviewDTO;
-import com.example.demo.entity.Review;
+import com.example.demo.persistence.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;

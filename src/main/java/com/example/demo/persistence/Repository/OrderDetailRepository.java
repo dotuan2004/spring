@@ -1,7 +1,5 @@
-package com.example.demo.Repository;
-
-
-import com.example.demo.entity.OrderDetail;
+package com.example.demo.persistence.Repository;
+import com.example.demo.persistence.entity.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

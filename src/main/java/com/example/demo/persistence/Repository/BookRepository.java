@@ -1,6 +1,6 @@
-package com.example.demo.Repository;
+package com.example.demo.persistence.Repository;
 
-import com.example.demo.entity.Book;
+import com.example.demo.persistence.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
