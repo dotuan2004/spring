@@ -1,6 +1,6 @@
 package com.example.demo.filter;
 
-import com.example.demo.presentation.service.JwtSevice;
+import com.example.demo.presentation.service.JwtService;
 import com.example.demo.presentation.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.io.IOException;
 @Component
 public class JwtFilter extends OncePerRequestFilter {
     @Autowired
-    private JwtSevice jwtSevice;
+    private JwtService jwtSevice;
 
     @Autowired
     private UserService userDetailSevice;

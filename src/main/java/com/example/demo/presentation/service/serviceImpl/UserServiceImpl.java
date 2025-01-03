@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -31,18 +33,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserName(String tenDangNhap) {
+    public Optional<User> findByUserName(String tenDangNhap) {
         return nguoiDungRepository.findByUsername(tenDangNhap);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User nguoiDung=nguoiDungRepository.findByUsername(username);
-        if (nguoiDung == null) {
+        Optional<User> nguoiDung=nguoiDungRepository.findByUsername(username);
+        if (nguoiDung.isEmpty()) {
             throw new UsernameNotFoundException("Không tìm thấy người dùng với tên đăng nhập: " + username);
         }
 
-        return new org.springframework.security.core.userdetails.User(nguoiDung.getUsername(), nguoiDung.getPassword(),rolesToAuthorities(nguoiDung.getRoleList()));
+        return new org.springframework.security.core.userdetails.User(nguoiDung.get().getUsername(), nguoiDung.get().getPassword(),rolesToAuthorities(nguoiDung.get().getRoleList()));
     }
 
     private Collection<? extends GrantedAuthority> rolesToAuthorities(Collection<Role> roles) {

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class ReviewServiceImpl implements ReviewService {
     @Autowired
@@ -23,24 +25,26 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     @Transactional
     public Review saveDanhGia(ReviewDTO DTO, Integer bookId) {
-        Book book = bookRepository.findByBookId(bookId);
-        if (book == null) {
+        Optional<Book> book = bookRepository.findByBookId(bookId);
+        if (book.isEmpty()) {
             throw new RuntimeException("khong tim thay sach");
         }
 
-        User user = userRepository.findByUsername(DTO.getUsername());
-        if (user == null) {
+        Optional<User> user = userRepository.findByUsername(DTO.getUsername());
+        if (user.isEmpty()) {
             throw new RuntimeException("khong tim thay user");
         }
 
         Review review = new Review();
-        review.setBook(book);  // Book should be managed by the persistence context
-        review.setUser(user);
+        review.setBook(book.get());
+        review.setUser(user.get());
         review.setRating(DTO.getRating());
         review.setContent(DTO.getContent());
 
         return reviewRepository.save(review);
     }
+
+
 
 
 }
