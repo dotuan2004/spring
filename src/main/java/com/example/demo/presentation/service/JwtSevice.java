@@ -12,10 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 @Component
@@ -30,10 +27,10 @@ public class JwtSevice {
         boolean isStaff=false;
         boolean isUser=false;
         Map<String,Object> claims =new HashMap<>();
-        User nguoiDung=userService.findByUserName(tenDangNhap);
+        Optional<User> nguoiDung=userService.findByUserName(tenDangNhap);
 
-        if (nguoiDung!= null && nguoiDung.getRoleList().size()>0){
-            List<Role> list = nguoiDung.getRoleList();
+        if (nguoiDung.isPresent() && nguoiDung.get().getRoleList().size()>0){
+            List<Role> list = nguoiDung.get().getRoleList();
             for (Role q: list) {
                 if(q.getRoleName().equals("ADMIN")){
                     isAdmin=true;
@@ -49,6 +46,7 @@ public class JwtSevice {
         claims.put("isAdmin", isAdmin);
         claims.put("isStaff", isStaff);
         claims.put("isUser", isUser);
+        claims.put("userId", nguoiDung.get().getUserId());
         return createToken(claims, tenDangNhap);
     }
 
